@@ -1,0 +1,16 @@
+{% extends "polls/layout" %}
+{# @pebvariable name="latestQuestions" type="java.util.List<polls.polls.QuestionEntity>" #}
+
+{% block body %}
+    <h1>Latest polls</h1>
+
+    {% if latestQuestions.size > 0 %}
+        <ul>
+        {% for question in latestQuestions %}
+            <li><a href="{{ href("/polls/#{question.id}") }}">{{ question.questionText }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+{% endblock %}

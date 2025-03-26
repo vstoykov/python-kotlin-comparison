@@ -1,0 +1,14 @@
+{% extends "polls/layout" %}
+{# @pebvariable name="question" type="polls.polls.QuestionEntity" #}
+
+{% block body %}
+    <h1>{{ question.questionText }}</h1>
+
+    <ul>
+    {% for choice in question.choices %}
+        <li>{{ choice.choiceText }} -- {{ choice.votes }} vote(s)</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{{ href("/polls/#{question.id}") }}">Vote again?</a>
+{% endblock %}
